@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
-class Borrow extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $books = Book::orderBy("id","desc")->paginate(10);
+        return view("books.index", ['books'=>$books]);
     }
 
     /**
@@ -19,7 +21,7 @@ class Borrow extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -27,7 +29,8 @@ class Borrow extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = Book::create($request->all());
+        return redirect()->route('books.index')->with('success','Added book successfully !');
     }
 
     /**
@@ -35,7 +38,8 @@ class Borrow extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('books.show', ['book'=>$book]);
     }
 
     /**
@@ -43,7 +47,8 @@ class Borrow extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('books.edit', ['book'=>$book]);
     }
 
     /**
@@ -51,7 +56,9 @@ class Borrow extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->update($request->all());
+        return redirect()->route('books.index')->with('success','Updated book successfully !');
     }
 
     /**
@@ -59,6 +66,8 @@ class Borrow extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect()->route('books.index')->with('success','Deleted book successfully !');
     }
 }
