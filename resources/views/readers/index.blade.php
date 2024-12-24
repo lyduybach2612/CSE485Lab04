@@ -1,17 +1,16 @@
-@extends('readers.app')
+@extends('layout.app')
 
 @section('content')
     <div class="container">
-        <h1 class="text-center text-primary">Reader List</h1>
-        @if(session('success'))
+    @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
     @endif
-        <a href="{{ route('readers.create') }}" class="btn btn-outline-primary mt-3"> Add new <i class="bi bi-pencil-square"></i></a>
+        <h1 class="text-center text-primary">Reader List</h1>
         <table class="table mt-4 align-middle">
             <thead class="text-center">
-                <tr class="border-bottom border-dark-subtle">
+                <tr class="border-bottom border-dark">
                     <th>Index</th>
                     <th>Name</th>
                     <th style="width: 20%;">Date of Birth</th>
@@ -26,7 +25,7 @@
                 <?php $i = 1 ?>
                 @foreach ($reader as $read)
                     <tr class="border-bottom border-dark-subtle">
-                        <td><?= $i ?></td>
+                        <th><?= $i ?></th>
                         <td>{{ $read->name }}</td>
                         <td>{{ $read->dob }}</td>
                         <td>{{ $read->address }}</td>

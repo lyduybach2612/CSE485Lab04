@@ -1,4 +1,4 @@
-@extends('readers.app')
+@extends('layout.app')
 
 @section('content')
     <div class="container" style="max-width:80%">
