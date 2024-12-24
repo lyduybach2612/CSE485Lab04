@@ -2,7 +2,7 @@
 
 @section('content')
     <div class = 'container'>
-        <h1>Book detail</h1>
+        <h1 class="text-center text-primary">Book detail</h1>
         <p><strong>Name:</strong>{{ $book->name }}</p>
         <p><strong>Author:</strong>{{ $book->author }}</p>
         <p><strong>Category:</strong>{{ $book->category }}</p>
