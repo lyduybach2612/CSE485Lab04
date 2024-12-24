@@ -3,6 +3,9 @@
 @section('content')
 
 <h2 class="text-center text-primary">Borrow List</h2>
+@if(session('success'))
+<div class="alert alert-success">{{session('success')}}</div>
+@endif
 <table class="table">
     <thead>
         <tr>
