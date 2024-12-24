@@ -2,42 +2,50 @@
 
 @section('content')
     <div class="container">
-    @if(session('success'))
+        <h1 class="text-center text-primary">Reader List</h1>
+        @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
     @endif
-        <h1 class="text-center text-danger">Reader List  <i class="bi bi-person-vcard-fill text-primary"></i></h1>
-        <a href="{{ route('readers.create') }}" class="btn btn-outline-primary"> Add new <i class="bi bi-pencil-square"></i></a>
-        <table class="table mt-3">
+        <a href="{{ route('readers.create') }}" class="btn btn-outline-primary mt-3"> Add new <i class="bi bi-pencil-square"></i></a>
+        <table class="table mt-4 align-middle">
             <thead class="text-center">
-                <tr>
-                    <th class="border border-secondary">ID</th>
-                    <th class="border border-secondary">Name</th>
-                    <th class="border border-secondary">Date of</th>
-                    <th class="border border-secondary">Address</th>
-                    <th class="border border-secondary">Phone number</th>
-                    <th class="border border-secondary">Action</th>
+                <tr class="border-bottom border-dark-subtle">
+                    <th>Index</th>
+                    <th>Name</th>
+                    <th style="width: 20%;">Date of Birth</th>
+                    <th style="width: 30%;">Address</th>
+                    <th style="width: 20%;">Phone number</th>
+                    <th>View</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody class="text-center">
+                <?php $i = 1 ?>
                 @foreach ($reader as $read)
-                    <tr>
-                        <td class="border border-secondary">{{ $read->id }}</td>
-                        <td class="border border-secondary">{{ $read->name }}</td>
-                        <td class="border border-secondary">{{ $read->dob }}</td>
-                        <td class="border border-secondary">{{ $read->address }}</td>
-                        <td class="border border-secondary">{{ $read->phone_number }}</td>
-                        <td class="border border-secondary text-center p-3">
-                            <a href="{{ route('readers.show', $read->id) }}" class="btn btn-outline-secondary"><i class="bi bi-eye"></i></a>
-                            <a href="{{ route('readers.edit', $read->id) }}" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a>
-                            <button type="button" class="btn btn-outline-danger" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#deleteModal"
-                                    data-id="{{ $read->id }}" 
-                                    data-name="{{ $read->name }}">
-                                <i class="bi bi-trash"></i></div>
-                            </button>
+                    <tr class="border-bottom border-dark-subtle">
+                        <td><?= $i ?></td>
+                        <td>{{ $read->name }}</td>
+                        <td>{{ $read->dob }}</td>
+                        <td>{{ $read->address }}</td>
+                        <td>{{ $read->phone_number }}</td>
+                        <td class="text-center m-4 p-3">
+                            <a href="{{ route('readers.show', $read->id) }}"><i class="bi bi-eye text-secondary"></i></a>
+                        </td>
+                        <td class="text-center m-4 p-3">
+                        <a href="{{ route('readers.edit', $read->id) }}"><i class="bi bi-pencil text-warning"></i></a>
+                        </td>
+                        <td class="text-center m-4 p-3">
+                        <a href=""
+                                data-bs-toggle="modal" 
+                                data-bs-target="#deleteModal"
+                                data-id="{{ $read->id }}" 
+                                data-name="{{ $read->name }}">
+                                <i class="bi bi-trash text-danger"></i></div>
+                            </a>
+                        </td>         
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -64,8 +72,10 @@
                             </form>
                         </td>
                     </tr>
+                    <?php $i++ ?>
                 @endforeach
             </tbody>
         </table>
+        <div>{{$reader->links("pagination::bootstrap-5")}}</div>
     </div>
 @endsection
