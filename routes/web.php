@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BorrowController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Models\Borrow;
 
 
 Route::get('/', function () {
@@ -9,3 +11,4 @@ Route::get('/', function () {
 });
 
 Route::resource('borrows',BorrowController::class);
+Route::resource('books',BookController::class);
