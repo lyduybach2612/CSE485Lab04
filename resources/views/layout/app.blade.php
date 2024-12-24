@@ -27,6 +27,12 @@
                         <a class="nav-link" href="{{ route('books.create') }}">Add a new book</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('readers.index') }}">Reader List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('readers.create') }}">Add a new reader</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('borrows.index')}}">Borrow List</a>
                     </li>
                     <li class="nav-item">
