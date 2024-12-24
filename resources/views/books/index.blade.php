@@ -68,7 +68,7 @@ $id = 0
           
         </tbody>
       </table>
-      <div class="pagination">
+      <div>
         {{ $books->links('pagination::bootstrap-5') }}
     </div>
 
