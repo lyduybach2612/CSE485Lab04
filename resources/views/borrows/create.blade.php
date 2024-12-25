@@ -38,6 +38,7 @@
         <input type="date" name="return_date" class="form-control" id="return_date">
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
+    <a href="{{route('borrows.index')}}" class="btn btn-secondary">Back</a>
 </form>
 <script>
     document.getElementById("borrow_date").min = new Date().toISOString().split("T")[0];

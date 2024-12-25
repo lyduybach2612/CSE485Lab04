@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{{ route('books.index') }}">Library</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,10 +22,13 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('books.index') }}">Book List</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('books.create') }}">Add a new book</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('readers.index') }}">Reader List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('books.create') }}">Add a new book</a>
+                        <a class="nav-link" href="{{ route('readers.create') }}">Add a new reader</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('borrows.index')}}">Borrow List</a>
