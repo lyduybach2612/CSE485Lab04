@@ -17,8 +17,8 @@ class BorrowController extends Controller
     {
         $index = 1;
         $borrows = Borrow::with('reader', 'book')
-                    ->orderBy('created_at','desc')
-                    ->paginate(10);
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
         return view("borrows.index", compact("borrows", "index"));
     }
 
@@ -38,14 +38,14 @@ class BorrowController extends Controller
     public function store(Request $request)
     {
         $borrow = $request->validate([
-            "book_id"=> "required",
-            "reader_id"=> "required",
+            "book_id" => "required",
+            "reader_id" => "required",
             'borrow_date' => 'required|date|after_or_equal:today',
             'return_date' => 'required|date|after_or_equal:borrow_date',
         ]);
 
         Borrow::create($borrow);
-        return redirect()->route("borrows.index")->with("success","You have added a borrow book successfully");
+        return redirect()->route("borrows.index")->with("success", "You have added a borrow book successfully");
     }
 
     /**
@@ -54,7 +54,7 @@ class BorrowController extends Controller
     public function show(string $id)
     {
         $borrow = Borrow::with('reader', 'book')
-                        ->findOrFail($id);
+            ->findOrFail($id);
         return view("borrows.show", compact("borrow"));
     }
 
@@ -73,7 +73,7 @@ class BorrowController extends Controller
     {
         $borrow = Borrow::findOrFail($id);
         $borrow->update(['status' => 1]);
-        return redirect()->route('borrows.index')->with('success','Return book successfully');
+        return redirect()->route('borrows.index')->with('success', 'Return book successfully');
     }
 
     /**
@@ -82,5 +82,5 @@ class BorrowController extends Controller
     public function destroy(string $id)
     {
         //
-    }   
+    }
 }

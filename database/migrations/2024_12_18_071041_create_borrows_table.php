@@ -20,8 +20,8 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->timestamps();
 
-            $table->foreign('reader_id')->references('id')->on("readers");
-            $table->foreign("book_id")->references("id")->on("books");
+            $table->foreign('reader_id')->references('id')->on("readers")->onDelete('cascade');
+            $table->foreign("book_id")->references("id")->on("books")->onDelete('cascade');
         });
     }
 
