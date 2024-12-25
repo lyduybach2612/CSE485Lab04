@@ -29,10 +29,12 @@
         <input type="number" class="form-control w-10" id="quantity" name="quantity" min="1" max="100" step="1">
     </div>
     
-    <button type="submit" class="btn btn-primary">Save</button>
+    <div class="d-flex" >
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a href="{{ route('books.index') }}" class="btn btn-secondary ms-2">Back</a>
+  </div>
     
   </form>
-  <a href ="{{ route('books.index') }}" class = 'btn btn-secondary'>Back</a>
 </div>
 
 @endsection
