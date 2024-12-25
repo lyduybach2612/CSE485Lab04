@@ -22,8 +22,11 @@
                 <h6 class="mb-2">Phone Number:</h6>
                 <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
             </div>
+            <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-outline-primary mt-4 px-4">Add</button>
+            <a href="{{ route('readers.index') }}" class="btn btn-outline-secondary mt-4 px-4">Back</a>
             </div>
+        </div>
         </form>
     </div>
 @endsection
