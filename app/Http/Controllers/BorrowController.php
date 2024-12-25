@@ -43,7 +43,10 @@ class BorrowController extends Controller
             'borrow_date' => 'required|date|after_or_equal:today',
             'return_date' => 'required|date|after_or_equal:borrow_date',
         ]);
-
+        $bookId = $borrow['book_id'];
+        $book = Book::findOrFail( $bookId);
+        $book->quantity = $book->quantity - 1;
+        $book->save();
         Borrow::create($borrow);
         return redirect()->route("borrows.index")->with("success", "You have added a borrow book successfully");
     }
@@ -72,6 +75,9 @@ class BorrowController extends Controller
     public function update(string $id)
     {
         $borrow = Borrow::findOrFail($id);
+        $book = Book::findOrFail( $borrow->book_id);
+        $book->quantity = $book->quantity + 1;
+        $book->save();
         $borrow->update(['status' => 1]);
         return redirect()->route('borrows.index')->with('success', 'Return book successfully');
     }
