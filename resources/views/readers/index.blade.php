@@ -39,14 +39,14 @@
                         <td class="text-center m-4 p-3">
                         <a href=""
                                 data-bs-toggle="modal" 
-                                data-bs-target="#deleteModal"
+                                data-bs-target="#deleteModal{{$read->id}}"
                                 data-id="{{ $read->id }}" 
                                 data-name="{{ $read->name }}">
                                 <i class="bi bi-trash text-danger"></i></div>
                             </a>
                         </td>         
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal{{$read->id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
